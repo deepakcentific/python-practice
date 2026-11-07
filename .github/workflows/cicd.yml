@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ main ]
 
-# permissions:
-#   contents: write # to allow pushing changes back to the repository
+permissions:
+  contents: write # to allow pushing changes back to the repository
 
 jobs:
   code_build:
@@ -73,6 +73,6 @@ jobs:
 
           # Commit the changes with a message that includes [skip ci] to prevent triggering another workflow run
           git commit -m "Update image tag [skip ci]"
-          
+
           git push
 
