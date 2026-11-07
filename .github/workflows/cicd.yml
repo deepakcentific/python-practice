@@ -63,11 +63,12 @@ jobs:
       - name: Update deployment yaml
         run: |
           # Update the image tag in k8s/deployment1.yaml to use the latest commit SHA
-          sed -i "s|image: dsahoo165/flask-api:latest|image: dsahoo165/flask-api:${{ github.sha }}|g" k8s/deployment1.yaml         
+          sed -i "s|image: dsahoo165/flask-api:latest|image: dsahoo165/flask-api:${{ github.sha }}|g" k8s/deployment1.yaml
+          cat k8s/deployment1.yaml
       
       - name: Show deployment yaml
         run: |
-          cat k8s/deployment.yaml
+          cat k8s/deployment1.yaml
 
       - name: Show diff
         run: |
