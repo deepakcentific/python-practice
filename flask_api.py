@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return jsonify({"message": "Sample Flask API endpoint!"})
+    return jsonify({"message": "Sample Flask API endpoint!. K8s deployment is successful!"})
 
 if __name__ == '__main__':
     # app.run(debug=True)
