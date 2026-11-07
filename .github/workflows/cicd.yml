@@ -54,16 +54,24 @@ jobs:
       - name: Build and push Docker image
         run: |
           # Push both latest and commit SHA tagged images to Docker Hub.
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:latest .
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }} .
-          docker image ls
-          docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }}
+          # # docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:latest .
+          # # docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }} .
+          # # docker image ls
+          # # docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:latest
+          # # docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }}
 
       - name: Update deployment yaml
         run: |
           # Update the image tag in k8s/deployment1.yaml to use the latest commit SHA
           sed -i "s|image: dsahoo165/flask-api:latest|image: dsahoo165/flask-api:${{ github.sha }}|g" k8s/deployment1.yaml         
+      
+      - name: Show deployment yaml
+        run: |
+          cat k8s/deployment.yaml
+
+      - name: Show diff
+        run: |
+          git diff          
 
       - name: Commit changes
         run: |
