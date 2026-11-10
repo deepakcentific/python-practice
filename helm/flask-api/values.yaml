@@ -2,7 +2,7 @@ replicaCount: 4
 
 image:
   repository: dsahoo165/flask-api
-  tag: 52961aaca4b3bab68c196081a2021c20165dd5db
+  tag: b3659db7a679c70b1363589e27cf327d432d5a20
 
 service:
   port: 80
