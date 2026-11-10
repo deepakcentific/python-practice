@@ -8,7 +8,7 @@ def home():
 
 @app.route('/health')
 def health():
-    return jsonify({"status": "healthy. 11 NOv 12:57 AM"}), 200
+    return jsonify({"status": "healthy. 11 Nov 01:02 PM"}), 200
 
 if __name__ == '__main__':
     # app.run(debug=True)
