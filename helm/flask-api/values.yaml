@@ -11,3 +11,4 @@ service:
 ingress:
   enabled: true
   host: deepak.com
+  argocdHost: argocd.deepak.com
