@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: flask-api
+        test: helm
 
     spec:
       containers:
