@@ -12,7 +12,8 @@ permissions:
 jobs:
   code_build:
     name: Build and Test Flask API
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, python_practice]
 
     steps:
       - name: Check out repository
@@ -36,7 +37,8 @@ jobs:
 
   docker_build:
     name: Build and Push Docker Image
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, python_practice]
     needs: code_build
 
     steps:
