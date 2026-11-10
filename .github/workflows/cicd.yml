@@ -13,7 +13,7 @@ jobs:
   code_build:
     name: Build and Test Flask API
     # runs-on: ubuntu-latest
-    runs-on: [self-hosted, label-1]
+    runs-on: [self-hosted, flask]
 
     steps:
       - name: Check out repository
@@ -38,7 +38,7 @@ jobs:
   docker_build:
     name: Build and Push Docker Image
     # runs-on: ubuntu-latest
-    runs-on: [self-hosted, label-1]
+    runs-on: [self-hosted, flask]
     needs: code_build
 
     steps:
