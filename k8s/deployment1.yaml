@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: flask-api
+        template: flask-api
     spec:
       containers:
       - name: flask-api
