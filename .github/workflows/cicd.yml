@@ -68,11 +68,14 @@ jobs:
           cat k8s/deployment1.yaml
           sed -i "s|dsahoo165/flask-api:.*|dsahoo165/flask-api:${GITHUB_SHA}|g" k8s/deployment1.yaml
 
-          git status
+          # update the helm values.yaml file with the new image tag
+          sed -i "s|tag:.*|tag: ${GITHUB_SHA}|g" helm/flask-api/values.yaml
+
       
-      - name: Show deployment yaml
+      - name: Show deployment yaml and helm values.yaml
         run: |
           cat k8s/deployment1.yaml
+          cat helm/flask-api/values.yaml
 
       # - name: Debug git status
       #   run: |
