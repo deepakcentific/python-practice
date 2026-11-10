@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: flask-api
-        image: dsahoo165/flask-api:2257080f618448125486d0d0821f6408a8225dd1
+        image: dsahoo165/flask-api:36a2a25a75c1d637815c77271f299e534a6f913d
         ports:
         - containerPort: 5000
