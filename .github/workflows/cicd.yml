@@ -107,7 +107,7 @@ jobs:
       #     sudo docker run -d --name flask-api -p 80:5000 dsahoo165/flask-api:${GITHUB_SHA}   
 
 
-  docker_build:
+  docker_run:
     name: Run Flask API Container
     # runs-on: ubuntu-latest
     # runs-on: [self-hosted, flask]
