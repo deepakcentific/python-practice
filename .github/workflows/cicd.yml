@@ -96,15 +96,7 @@ jobs:
           # Commit the changes with a message that includes [skip ci] to prevent triggering another workflow run
           git commit -m "Update image tag [skip ci]"
 
-          git push
-
-      # - name: Pull latest image
-      #   run: docker pull dsahoo165/flask-api:${GITHUB_SHA}
-
-      # - name: Recreate container
-      #   run: |
-      #     sudo docker rm -f flask-api || true
-      #     sudo docker run -d --name flask-api -p 80:5000 dsahoo165/flask-api:${GITHUB_SHA}   
+          git push   
 
 
   docker_run:
@@ -116,7 +108,7 @@ jobs:
 
     steps:
       - name: Pull latest image
-        run: docker pull dsahoo165/flask-api:${GITHUB_SHA}
+        run: sudo docker pull dsahoo165/flask-api:${GITHUB_SHA}
 
       - name: Recreate container
         run: |
