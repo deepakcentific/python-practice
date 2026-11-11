@@ -58,11 +58,11 @@ jobs:
       - name: Build and push Docker image
         run: |
           # Push both latest and commit SHA tagged images to Docker Hub.
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:latest .
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }} .
-          docker image ls
-          docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }}
+          sudo docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:latest .
+          sudo docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }} .
+          sudo docker image ls
+          sudo docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:latest
+          sudo docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:${{ github.sha }}
 
       - name: Update values.yaml with new image tag
         run: |
