@@ -13,7 +13,8 @@ jobs:
   code_build:
     name: Build and Test Flask API
     # runs-on: ubuntu-latest
-    runs-on: [self-hosted, flask]
+    # runs-on: [self-hosted, flask]
+    runs-on: [self-hosted, azurevm]
 
     steps:
       - name: Check out repository
@@ -38,7 +39,8 @@ jobs:
   docker_build:
     name: Build and Push Docker Image
     # runs-on: ubuntu-latest
-    runs-on: [self-hosted, flask]
+    # runs-on: [self-hosted, flask]
+    runs-on: [self-hosted, azurevm]
     needs: code_build
 
     steps:
@@ -95,4 +97,12 @@ jobs:
           git commit -m "Update image tag [skip ci]"
 
           git push
+
+      - name: Pull latest image
+        run: docker pull dsahoo165/flask-api:${GITHUB_SHA}
+
+      - name: Recreate container
+        run: |
+          sudo docker rm -f flask-api || true
+          sudo docker run -d --name flask-api -p 80:5000 dsahoo165/flask-api:${GITHUB_SHA}          
 
