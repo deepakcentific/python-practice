@@ -98,11 +98,28 @@ jobs:
 
           git push
 
+      # - name: Pull latest image
+      #   run: docker pull dsahoo165/flask-api:${GITHUB_SHA}
+
+      # - name: Recreate container
+      #   run: |
+      #     sudo docker rm -f flask-api || true
+      #     sudo docker run -d --name flask-api -p 80:5000 dsahoo165/flask-api:${GITHUB_SHA}   
+
+
+  docker_build:
+    name: Run Flask API Container
+    # runs-on: ubuntu-latest
+    # runs-on: [self-hosted, flask]
+    runs-on: [self-hosted, azurevm]
+    needs: code_build
+
+    steps:
       - name: Pull latest image
         run: docker pull dsahoo165/flask-api:${GITHUB_SHA}
 
       - name: Recreate container
         run: |
           sudo docker rm -f flask-api || true
-          sudo docker run -d --name flask-api -p 80:5000 dsahoo165/flask-api:${GITHUB_SHA}          
+          sudo docker run -d --name flask-api -p 80:5000 dsahoo165/flask-api:${GITHUB_SHA} 
 
