@@ -1,7 +1,7 @@
 replicaCount: 4
 
 image:
-  repository: deepak/app1/flask-api
+  repository: deepak.azurecr.io/app1/flask-api
   tag: 878754cddcaf03e718711126577d75eff0eaf74c
 
 service:

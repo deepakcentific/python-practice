@@ -52,23 +52,24 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
+          registry: deepak.azurecr.io
           username: ${{ secrets.AZURE_ACR_USERNAME }}
           password: ${{ secrets.AZURE_ACR_PWD }}
 
       - name: Build and push Docker image
         run: |
           # Push both latest and commit SHA tagged images to Docker Hub.
-          docker build -t ${{ secrets.AZURE_ACR_USERNAME }}/app1/flask-api:latest .
-          docker build -t ${{ secrets.AZURE_ACR_USERNAME }}/app1/flask-api:${{ github.sha }} .
+          docker build -t deepak.azurecr.io/app1/flask-api:latest .
+          docker build -t deepak.azurecr.io/app1/flask-api:${{ github.sha }} .
           docker image ls
-          docker push ${{ secrets.AZURE_ACR_USERNAME }}/app1/flask-api:latest
-          docker push ${{ secrets.AZURE_ACR_USERNAME }}/app1/flask-api:${{ github.sha }}
+          docker push deepak.azurecr.io/app1/flask-api:latest
+          docker push deepak.azurecr.io/app1/flask-api:${{ github.sha }}
 
       - name: Update values.yaml with new image tag
         run: |
           # Update the image tag in k8s/deployment1.yaml to use the latest commit SHA
           cat k8s/deployment1.yaml
-          sed -i "s|deepak/app1/flask-api:.*|deepak/app1/flask-api:${GITHUB_SHA}|g" k8s/deployment1.yaml
+          sed -i "s|deepak.azurecr.io/app1/flask-api:.*|deepak.azurecr.io/app1/flask-api:${GITHUB_SHA}|g" k8s/deployment1.yaml
 
           # update the helm values.yaml file with the new image tag
           sed -i "s|tag:.*|tag: ${GITHUB_SHA}|g" helm/flask-api/values.yaml
