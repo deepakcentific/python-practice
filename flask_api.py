@@ -8,7 +8,7 @@ def home():
 
 @app.route('/health')
 def health():
-    return jsonify({"status": "Running healthy inside Kubernetes. 14 Nov 04:18 PM"}), 200
+    return jsonify({"status": "Running healthy inside Kubernetes. 14 Nov 06:08 PM"}), 200
 
 if __name__ == '__main__':
     # app.run(debug=True)
