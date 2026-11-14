@@ -1,7 +1,7 @@
 replicaCount: 4
 
 image:
-  repository: dsahoo165/flask-api
+  repository: deepak/app1/flask-api
   tag: 878754cddcaf03e718711126577d75eff0eaf74c
 
 service:
@@ -10,5 +10,5 @@ service:
 
 ingress:
   enabled: true
-  host: deepak.com
-  argocdHost: argocd.deepak.com
+  host: deepaksahoo.in
+  argocdHost: argocd.deepaksahoo.in
