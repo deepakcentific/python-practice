@@ -5,7 +5,8 @@ metadata:
 spec:
   ingressClassName: nginx
 
-# annotation:
+annotation:
+  service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: "/healthz"
 #   kubernetes.io/ingress.class: nginx
 #   nginx.ingress.kubernetes.io/rewrite-target: /
 #   service.beta.kubernetes.io/azure-load-balancer-internal: "true"      
