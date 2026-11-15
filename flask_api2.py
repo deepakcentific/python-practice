@@ -8,8 +8,8 @@ def home():
 
 @app.route('/health')
 def health():
-    return jsonify({"status": "Second Flask API is running healthy inside Kubernetes. 15 Nov 10:46 AM"}), 200
+    return jsonify({"status": "Second Flask API is running healthy inside Kubernetes. 15 Nov 11:04 AM"}), 200
 
 if __name__ == '__main__':
     # app.run(debug=True)
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5000)

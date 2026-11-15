@@ -17,4 +17,4 @@ spec:
       - name: flask-api-2
         image: deepak.azurecr.io/app2/flask-api-2:7d5cceab6b8a722994d91756ac2024787de318b7
         ports:
-        - containerPort: 5001
+        - containerPort: 5000
