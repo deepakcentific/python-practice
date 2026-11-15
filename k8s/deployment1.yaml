@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: flask-api
-        image: deepak.azurecr.io/app1/flask-api:90039bf00a67b776ebc7cead00ad907f1972a679
+        image: deepak.azurecr.io/app1/flask-api:cdb5ff068d6aa6750e7e484fd4fb031d82b79a5f
         ports:
         - containerPort: 5000
