@@ -16,3 +16,13 @@ spec:
             name: flask-api-service
             port:
               number: 80
+  - host: pep.deepaksahoo.in #private endpoint is the subdomain for the flask-api service
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: flask-api-service
+            port:
+              number: 80              
