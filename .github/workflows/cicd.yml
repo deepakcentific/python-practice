@@ -65,13 +65,6 @@ jobs:
           docker push deepak.azurecr.io/app1/flask-api:latest
           docker push deepak.azurecr.io/app1/flask-api:${{ github.sha }}
 
-          #Second Docker image for flask-api-2
-          docker build -t deepak.azurecr.io/app2/flask-api-2:latest .
-          docker build -t deepak.azurecr.io/app2/flask-api-2:${{ github.sha }} .
-          docker image ls
-          docker push deepak.azurecr.io/app2/flask-api-2:latest
-          docker push deepak.azurecr.io/app2/flask-api-2:${{ github.sha }}
-
       - name: Update values.yaml with new image tag
         run: |
           # Update the image tag in k8s/deployment1.yaml to use the latest commit SHA
@@ -81,9 +74,6 @@ jobs:
           # update the helm values.yaml file with the new image tag
           sed -i "s|tag:.*|tag: ${GITHUB_SHA}|g" helm/flask-api/values.yaml
 
-          # Update the image tag in k8s/deployment2.yaml to use the latest commit SHA
-          cat k8s/deployment2.yaml
-          sed -i "s|deepak.azurecr.io/app2/flask-api-2:.*|deepak.azurecr.io/app2/flask-api-2:${GITHUB_SHA}|g" k8s/deployment2.yaml
 
       
       - name: Show deployment yaml and helm values.yaml
@@ -91,8 +81,6 @@ jobs:
           cat k8s/deployment1.yaml
           cat helm/flask-api/values.yaml
 
-          # Show deployment2 yaml
-          cat k8s/deployment2.yaml
 
       # - name: Debug git status
       #   run: |
@@ -108,9 +96,6 @@ jobs:
           git add k8s/deployment1.yaml
           git add helm/flask-api/values.yaml
 
-          # Add the second deployment file to the commit
-          git add k8s/deployment2.yaml
-          
           # Commit the changes with a message that includes [skip ci] to prevent triggering another workflow run
           git commit -m "Update image tag [skip ci]"
 
