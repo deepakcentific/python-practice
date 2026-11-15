@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-api-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-api-2
+  template:
+    metadata:
+      labels:
+        app: flask-api-2
+        template: flask-api-2
+    spec:
+      containers:
+      - name: flask-api-2
+        image: deepak.azurecr.io/app1/flask-api:7d5cceab6b8a722994d91756ac2024787de318b7
+        ports:
+        - containerPort: 5001
