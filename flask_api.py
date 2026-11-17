@@ -6,9 +6,9 @@ app = Flask(__name__)
 def home():
     return jsonify({"message": "Sample Flask API endpoint!"})
 
-@app.route('/health')
+@app.route('/healthz')
 def health():
-    return jsonify({"status": "Running healthy inside Kubernetes. 15 Nov 20:03 PM"}), 200
+    return jsonify({"status": "Running healthy inside Kubernetes. 17 Nov 20:05 PM"}), 200
 
 if __name__ == '__main__':
     # app.run(debug=True)
