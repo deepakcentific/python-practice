@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     return jsonify({"message": "Sample Flask API endpoint!"})
 
-@app.route('/healthz')
+@app.route('/health')
 def health():
     return jsonify({"status": "Running healthy inside terraform created Kubernetes. 17 Nov 20:45 PM"}), 200
 
